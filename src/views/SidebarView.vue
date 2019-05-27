@@ -15,7 +15,7 @@
 <script>
 import Vue from 'vue'
 import ToggleFacet from '../components/facets/ToggleFacet.vue'
-import { mapMutations } from 'vuex'
+import { toFacets } from '../service/facetToUrlMapper'
 
 export default Vue.extend({
   name: 'SidebarView',
@@ -29,7 +29,7 @@ export default Vue.extend({
     },
     selectedGenderOptions: {
       get () {
-        return this.$store.state.facetFilter.gender
+        return this.$store.getters.selectedGenderOptions
       },
       set (value) {
         this.$store.commit('updateGenderFilter', value)
@@ -37,13 +37,17 @@ export default Vue.extend({
     },
     selectedCohortOptions: {
       get () {
-        return this.$store.state.facetFilter.cohort
+        return this.$store.getters.selectedCohortsOptions
       },
       set (value) {
         this.$store.commit('updateCohortfilter', value)
       }
     }
-
+  },
+  mounted: function () {
+    const initialFacetState = toFacets(this.$store.state.route.query)
+    this.$store.commit('updateGenderFilter', initialFacetState.gender)
+    this.$store.commit('updateCohortfilter', initialFacetState.cohort)
   }
 })
 </script>

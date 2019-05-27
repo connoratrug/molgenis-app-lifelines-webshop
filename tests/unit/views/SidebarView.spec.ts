@@ -21,13 +21,22 @@ describe('SidebarView.vue', () => {
       facetFilter: {
         gender: [],
         cohort: []
+      },
+      route: {
+        query: {}
       }
+    }
+
+    const getters = {
+      selectedGenderOptions: [],
+      selectedCohortsOptions: []
     }
 
     wrapper = shallowMount(SidebarView, {
       mocks: {
         $store: {
           state,
+          getters,
           commit: commitMock
         }
       },

@@ -6,7 +6,8 @@ const state: ApplicationState = {
   facetFilter: {
     gender: [],
     cohort: []
-  }
+  },
+  route: {}
 }
 
 export default state
