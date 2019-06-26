@@ -36,7 +36,7 @@
                 v-for="child in parent.children"
                 :key="child.name"
                 :title="child.name"
-                @click="selectElement(child.name)"
+                @click="selectElement(child.id)"
               >
                 <div class="row">
                   <div class="text-truncate col pr-0">
@@ -71,7 +71,7 @@ export default Vue.extend({
   },
   props: {
     value: {
-      type: String,
+      type: Number,
       required: true
     },
     structure: {
@@ -80,8 +80,8 @@ export default Vue.extend({
     }
   },
   methods: {
-    selectElement (name) {
-      this.$emit('input', name)
+    selectElement (id) {
+      this.$emit('input', id)
     },
     toggleCollapse (name) {
       if (this.collapsed === name) {
