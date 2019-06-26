@@ -5,7 +5,7 @@
     >
       <tr>
         <th scope="col">Variable</th>
-        <th scope="col" :colspan="gridAssessments.length + 1">Collection Round</th>
+        <th scope="col" :colspan="gridAssessments.length + 1">Assessments</th>
       </tr>
       <tr>
         <th class="w-0"></th>
