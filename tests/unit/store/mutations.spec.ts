@@ -159,7 +159,10 @@ describe('mutations', () => {
         submissionDate: 'ignore',
         creationDate: 'ignore',
         updateDate: 'ignore',
-        state: OrderState.Draft
+        state: OrderState.Draft,
+        email: 'ignore',
+        user: 'ignore',
+        contents: null
       }
       mutations.setOrderDetails(baseAppState, order)
 
@@ -175,12 +178,16 @@ describe('mutations', () => {
         state: null,
         submissionDate: null,
         creationDate: null,
-        updateDate: null
+        updateDate: null,
+        email: null,
+        user: null,
+        contents: null
       })
     })
   })
 
   describe('restoreOrderState', () => {
+    const file = new File([], 'file.test')
     it('sets the order fields from the response', () => {
       let baseAppState = Object.assign({}, state)
       const response = {
@@ -197,7 +204,14 @@ describe('mutations', () => {
         submissionDate: 'edit',
         creationDate: 'creationDate',
         updateDate: 'updateDate',
-        state: OrderState.Draft
+        state: OrderState.Draft,
+        email: 'email',
+        user: 'user',
+        contents: {
+          id: 'id',
+          filename: 'fileName',
+          url: 'url'
+        }
       }
       mutations.restoreOrderState(baseAppState, response)
 
@@ -213,7 +227,14 @@ describe('mutations', () => {
         submissionDate: 'edit',
         creationDate: 'creationDate',
         updateDate: 'updateDate',
-        state: OrderState.Draft
+        state: OrderState.Draft,
+        email: 'email',
+        user: 'user',
+        contents: {
+          id: 'id',
+          filename: 'fileName',
+          url: 'url'
+        }
       })
     })
   })
