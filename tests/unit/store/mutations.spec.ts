@@ -179,15 +179,14 @@ describe('mutations', () => {
         submissionDate: null,
         creationDate: null,
         updateDate: null,
+        contents: null,
         email: null,
-        user: null,
-        contents: null
+        user: null
       })
     })
   })
 
   describe('restoreOrderState', () => {
-    const file = new File([], 'file.test')
     it('sets the order fields from the response', () => {
       let baseAppState = Object.assign({}, state)
       const response = {
