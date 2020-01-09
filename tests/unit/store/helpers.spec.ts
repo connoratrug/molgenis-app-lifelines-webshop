@@ -5,6 +5,14 @@ import { CartFilter, Cart } from '@/types/Cart'
 import Filter from '@/types/Filter'
 
 describe('store', () => {
+  let log = jest.fn()
+  let trace = jest.fn()
+
+  beforeEach(() => {
+    // @ts-ignore
+    global.console = { log, trace }
+  })
+
   describe('helpers', () => {
     describe('getErrorMessage', () => {
       it('converts error response with code', () => {
