@@ -525,22 +525,25 @@ describe('actions', () => {
       done()
     })
 
-    it('adds submission form if it is available', async (done) => {
+    beforeEach(async (done) => {
       const sourceNumber = 'source_order_with_form'
       const commit = jest.fn()
       const state: ApplicationState = {
         ...emptyState
       }
-      jest.spyOn(orderService, 'buildFormData').mockImplementation(() => new FormData())
-      jest.spyOn(orderService, 'generateOrderNumber').mockImplementation(() => 'Copy123')
-      // jest.spyOn(helperService, 'getApplicationForm').mockImplementation(async () => new Blob())
-
-      post.mockResolvedValue('success')
       await actions.copyOrder({ commit, state }, sourceNumber)
       done()
     })
-  })
 
+    it('adds application form if it is available', () => {
+      expect(post).toBeCalledWith('/api/v1/lifelines_order', expect.anything(), expect.anything())
+      const formIterator = post.mock.calls[0][1].body.entries()
+      const arrayData = Array.from(formIterator)
+      // @ts-ignore
+      const file = arrayData[2][1] // position of the uploaded file
+      expect(file).not.toEqual('')
+    })
+  })
   describe('save', () => {
     describe('if orderNumber is set', () => {
       it('saves grid selection', async (done) => {

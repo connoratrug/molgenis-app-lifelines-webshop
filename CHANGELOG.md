@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/molgenis/molgenis-app-lifelines-webshop/compare/v1.3.1...v1.3.2) (2020-01-09)
+
+
+### Bug Fixes
+
+* **unit tests:** fixed issue where test only added to coverage. Added… ([#237](https://github.com/molgenis/molgenis-app-lifelines-webshop/issues/237)) ([e28d755](https://github.com/molgenis/molgenis-app-lifelines-webshop/commit/e28d755))
+
 ## [1.3.1](https://github.com/molgenis/molgenis-app-lifelines-webshop/compare/v1.3.0...v1.3.1) (2020-01-09)
 
 
