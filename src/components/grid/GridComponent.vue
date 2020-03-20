@@ -8,7 +8,7 @@
             <th class="variable-column-spacer" ref="varspacer"></th>
             <th></th>
             <th v-for="assessment in gridAssessments" :key="assessment.id" class="text-center">
-              <div class="assessments-title">
+              <div ref="assessment" class="assessments-title">
                 <span>{{assessment.name}}</span>
               </div>
             </th>
@@ -297,6 +297,11 @@ export default Vue.extend({
       const header = this.getHeaderHeight()
       if (table && header) {
         this.stickyTableHeader = table - header < 112 // 7rem @ 16px basesize
+      }
+
+      if (this.$refs.gridheader) {
+        const left = window.pageXOffset || document.documentElement.scrollLeft
+        this.$refs.gridheader.style.marginLeft = '-' + left + 'px'
       }
     },
     /**
